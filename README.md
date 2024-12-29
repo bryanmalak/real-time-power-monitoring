@@ -20,5 +20,5 @@ Follow these steps to run the project on your local machine:
 
 ## Future Enhancements
 
-- Integration with real hardware like Arduino or Raspberry Pi for live power monitoring.
+- Integration with real hardware (Arduino or Raspberry Pi) for live power monitoring.
 - Data export functionality for energy usage reports.
