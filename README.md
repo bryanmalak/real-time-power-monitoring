@@ -1,11 +1,12 @@
 # Real-Time Power Monitoring Dashboard 🚀
 
-This project simulates and visualizes real-time power usage for smart devices using **Python** and **Streamlit**.
+This project provides a real-time simulation and visualization of energy usage for smart devices. Built with Python, Streamlit, and Matplotlib, it demonstrates the potential for monitoring and analyzing energy consumption trends in a modern, interactive dashboard.
 
-## Features
-- 🔌 Simulates power usage for devices: **Fridge**, **Air Conditioner**, and **Smart Light**.
-- 📊 Real-time interactive line charts showing power consumption trends.
-- 🛠 Built with **Python**, **Streamlit**, and **Matplotlib**.
+## Key Features 🌟
+🔌 Device Simulation – Models power usage for smart devices like a Fridge, Air Conditioner, and Smart Light.
+📊 Interactive Charts – Real-time, dynamic line charts visualize energy consumption trends instantly.
+🛠 Modern Tech Stack – Built with Python, Streamlit, and Matplotlib for scalability and performance.
+📈 Custom Monitoring Options – Adjustable timeframes allow flexible data visualization and monitoring.
 
 ## Installation
 Follow these steps to run the project on your local machine:
