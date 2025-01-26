@@ -2,7 +2,6 @@ import streamlit as st
 import pandas as pd
 import time
 import random
-import matplotlib.pyplot as plt
 from datetime import datetime
 
 # Page configuration
@@ -149,35 +148,24 @@ try:
             }
             st.dataframe(pd.Series(annual_costs).round(2))
         
-        # Enhanced visualization with cost trends
+        # Replace matplotlib plots with Streamlit native charts
         st.write("### Power Usage Trends")
-        fig, (ax1, ax2) = plt.subplots(2, 1, figsize=(10, 12))
+        st.line_chart(
+            df.set_index("Time")[devices],
+            use_container_width=True,
+            height=400
+        )
         
-        # Power usage plot
-        for device in devices:
-            ax1.plot(df["Time"], df[device], label=device, marker='o', markersize=4)
-        ax1.set_xlabel("Time")
-        ax1.set_ylabel("Power (W)")
-        ax1.legend()
-        ax1.grid(True, linestyle='--', alpha=0.7)
-        ax1.tick_params(axis='x', rotation=45)
-        ax1.set_title("Power Consumption Over Time")
-        
-        # Cost projection plot
+        # Cost projections using Streamlit bar chart
+        st.write("### Cost Projections by Time Period")
         costs = pd.DataFrame({
-            'Hourly': hourly_costs.values(),
-            'Daily': [cost * 24 for cost in hourly_costs.values()],
-            'Monthly': [cost * 24 * 30 for cost in hourly_costs.values()],
-            'Annual': [cost * 24 * 365 for cost in hourly_costs.values()]
+            'Hourly': [hourly_costs[d] for d in devices],
+            'Daily': [hourly_costs[d] * 24 for d in devices],
+            'Monthly': [hourly_costs[d] * 24 * 30 for d in devices],
+            'Annual': [hourly_costs[d] * 24 * 365 for d in devices]
         }, index=devices)
         
-        costs.plot(kind='bar', ax=ax2)
-        ax2.set_ylabel("Cost ($)")
-        ax2.set_title("Cost Projections by Time Period")
-        ax2.grid(True, linestyle='--', alpha=0.7)
-        
-        plt.tight_layout()
-        st.pyplot(fig)
+        st.bar_chart(costs.T)
 
 except Exception as e:
     st.error(f"An error occurred: {str(e)}")
